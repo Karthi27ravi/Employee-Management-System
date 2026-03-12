@@ -2,7 +2,10 @@ package org.example.ems_new.Entity;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.*;
 
 @Getter
@@ -15,17 +18,18 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     @Column
     @NotBlank
     private String name;
     @Column(unique = true)
-    @NotBlank
+    @Email
     private String email;
     @Column
     @NotBlank
     private String department;
     @Column
-    @NotBlank
-    private double salary;
+    @NotNull
+    @Positive
+    private Double salary;
 }
